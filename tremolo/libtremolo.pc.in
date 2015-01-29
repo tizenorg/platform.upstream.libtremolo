@@ -1,0 +1,12 @@
+prefix = @prefix@
+exec_prefix=@exec_prefix@
+libdir = @libdir@
+includedir = @includedir@
+
+Name : tremolo
+Description : Audio Library
+Requires : @TREMOLO_REQPKG@
+Version : @VERSION@
+Libs : -L${libdir} -ltremolo
+Cflags : -I${includedir}/tremolo
+
