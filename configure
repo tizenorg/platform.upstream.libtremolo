@@ -8884,7 +8884,7 @@ fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
   if test -z "$lt_cv_aix_libpath_"; then
-    lt_cv_aix_libpath_="/usr/lib:/lib"
+    lt_cv_aix_libpath_="%{_libdir}:/lib"
   fi
 
 fi
@@ -8896,7 +8896,7 @@ fi
         archive_expsym_cmds='$CC -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags `if test "x${allow_undefined_flag}" != "x"; then func_echo_all "${wl}${allow_undefined_flag}"; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
       else
 	if test "$host_cpu" = ia64; then
-	  hardcode_libdir_flag_spec='${wl}-R $libdir:/usr/lib:/lib'
+	  hardcode_libdir_flag_spec='${wl}-R $libdir:%{_libdir}:/lib'
 	  allow_undefined_flag="-z nodefs"
 	  archive_expsym_cmds="\$CC $shared_flag"' -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags ${wl}${allow_undefined_flag} '"\${wl}$exp_sym_flag:\$export_symbols"
 	else
@@ -8937,7 +8937,7 @@ fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
   if test -z "$lt_cv_aix_libpath_"; then
-    lt_cv_aix_libpath_="/usr/lib:/lib"
+    lt_cv_aix_libpath_="%{_libdir}:/lib"
   fi
 
 fi
@@ -9825,7 +9825,7 @@ BEGIN {RS=" "; FS="/|\n";} {
   esac
   sys_lib_search_path_spec=`$ECHO "$lt_search_path_spec" | $lt_NL2SP`
 else
-  sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
+  sys_lib_search_path_spec="/lib %{_libdir} /usr/local/lib"
 fi
 library_names_spec=
 libname_spec='lib$name'
@@ -9839,7 +9839,7 @@ shlibpath_var=
 shlibpath_overrides_runpath=unknown
 version_type=none
 dynamic_linker="$host_os ld.so"
-sys_lib_dlsearch_path_spec="/lib /usr/lib"
+sys_lib_dlsearch_path_spec="/lib %{_libdir}"
 need_lib_prefix=unknown
 hardcode_into_libs=no
 
@@ -9929,8 +9929,8 @@ bsdi[45]*)
   soname_spec='${libname}${release}${shared_ext}$major'
   finish_cmds='PATH="\$PATH:/sbin" ldconfig $libdir'
   shlibpath_var=LD_LIBRARY_PATH
-  sys_lib_search_path_spec="/shlib /usr/lib /usr/X11/lib /usr/contrib/lib /lib /usr/local/lib"
-  sys_lib_dlsearch_path_spec="/shlib /usr/lib /usr/local/lib"
+  sys_lib_search_path_spec="/shlib %{_libdir} /usr/X11/lib /usr/contrib/lib /lib /usr/local/lib"
+  sys_lib_dlsearch_path_spec="/shlib %{_libdir} /usr/local/lib"
   # the default ld.so.conf also contains /usr/contrib/lib and
   # /usr/X11R6/lib (/usr/X11 is a link to /usr/X11R6), but let us allow
   # libtool to hard-code these into programs
@@ -10058,7 +10058,7 @@ darwin* | rhapsody*)
   shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
 
   sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/local/lib"
-  sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
+  sys_lib_dlsearch_path_spec='/usr/local/lib /lib %{_libdir}'
   ;;
 
 dgux*)
@@ -10293,7 +10293,7 @@ fi
   # Append ld.so.conf contents to the search path
   if test -f /etc/ld.so.conf; then
     lt_ld_extra=`awk '/^include / { system(sprintf("cd /etc; cat %s 2>/dev/null", \$2)); skip = 1; } { if (!skip) print \$0; skip = 0; }' < /etc/ld.so.conf | $SED -e 's/#.*//;/^[	 ]*hwcap[	 ]/d;s/[:,	]/ /g;s/=[^=]*$//;s/=[^= ]* / /g;s/"//g;/^$/d' | tr '\n' ' '`
-    sys_lib_dlsearch_path_spec="/lib /usr/lib $lt_ld_extra"
+    sys_lib_dlsearch_path_spec="/lib %{_libdir} $lt_ld_extra"
   fi
 
   # We used to test for /lib/ld.so.1 and disable shared libraries on
@@ -10356,7 +10356,7 @@ newsos6)
 
 openbsd*)
   version_type=sunos
-  sys_lib_dlsearch_path_spec="/usr/lib"
+  sys_lib_dlsearch_path_spec="%{_libdir}"
   need_lib_prefix=no
   # Some older versions of OpenBSD (3.3 at least) *do* need versioned libs.
   case $host_os in
@@ -10396,7 +10396,7 @@ osf3* | osf4* | osf5*)
   soname_spec='${libname}${release}${shared_ext}$major'
   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
   shlibpath_var=LD_LIBRARY_PATH
-  sys_lib_search_path_spec="/usr/shlib /usr/ccs/lib /usr/lib/cmplrs/cc /usr/lib /usr/local/lib /var/shlib"
+  sys_lib_search_path_spec="/usr/shlib /usr/ccs/lib /usr/lib/cmplrs/cc %{_libdir} /usr/local/lib /var/shlib"
   sys_lib_dlsearch_path_spec="$sys_lib_search_path_spec"
   ;;
 
@@ -10471,16 +10471,16 @@ sysv5* | sco3.2v5* | sco5v6* | unixware* | OpenUNIX* | sysv4*uw2*)
   shlibpath_overrides_runpath=yes
   hardcode_into_libs=yes
   if test "$with_gnu_ld" = yes; then
-    sys_lib_search_path_spec='/usr/local/lib /usr/gnu/lib /usr/ccs/lib /usr/lib /lib'
+    sys_lib_search_path_spec='/usr/local/lib /usr/gnu/lib /usr/ccs/lib %{_libdir} /lib'
   else
-    sys_lib_search_path_spec='/usr/ccs/lib /usr/lib'
+    sys_lib_search_path_spec='/usr/ccs/lib %{_libdir}'
     case $host_os in
       sco3.2v5*)
         sys_lib_search_path_spec="$sys_lib_search_path_spec /lib"
 	;;
     esac
   fi
-  sys_lib_dlsearch_path_spec='/usr/lib'
+  sys_lib_dlsearch_path_spec='%{_libdir}'
   ;;
 
 tpf*)
