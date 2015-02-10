@@ -3,7 +3,7 @@ Summary:    Audio Library
 Version:    0.0.11
 Release:    0
 Group:      System/Libraries
-License:    BSD
+License:    BSD-2-Clause
 Source0:    %{name}-%{version}.tar.gz
 Requires(post):  /sbin/ldconfig
 Requires(postun):  /sbin/ldconfig
@@ -17,7 +17,7 @@ BuildRequires: pkgconfig(mm-log)
 BuildRoot:  %{_tmppath}/%{name}-%{version}-build
 
 %description
-
+Tremolo is playback codec, which is an arm optimized version of the ogg vorvis 'Tremor'
 
 %package devel
 Summary:    Multimedia Framework Utility Library (DEV)
@@ -25,6 +25,7 @@ Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 
 %description devel
+Tremolo is playback codec, which is an arm optimized version of the ogg vorvis 'Tremor'(DEV)
 
 %prep
 %setup -q
@@ -33,8 +34,9 @@ Requires:   %{name} = %{version}-%{release}
 ./autogen.sh
 
 CFLAGS="$CFLAGS -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" -D_MM_PROJECT_FLOATER" \
-LDFLAGS+="-Wl,--rpath=%{_prefix}/lib -Wl,--hash-style=both -Wl,--as-needed" \
-./configure --prefix=%{_prefix}
+LDFLAGS+="-Wl,--rpath=%{_libdir} -Wl,--hash-style=both -Wl,--as-needed" \
+%configure --prefix=%{_prefix}
+
 make %{?jobs:-j%jobs}
 
 sed -i -e "s#@TREMOLO_REQPKG@#$TREMOLO_REQPKG#g" tremolo/libtremolo.pc
