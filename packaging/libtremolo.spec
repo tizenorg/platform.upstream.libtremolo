@@ -3,7 +3,7 @@ Summary:    Audio Library
 Version:    0.0.11
 Release:    0
 Group:      System/Libraries
-License:    BSD-2-Clause
+License:    BSD-2.0 and Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
 Requires(post):  /sbin/ldconfig
 Requires(postun):  /sbin/ldconfig
