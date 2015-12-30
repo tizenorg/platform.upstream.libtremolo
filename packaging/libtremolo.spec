@@ -1,7 +1,7 @@
 Name:       libtremolo
 Summary:    Audio Library
 Version:    0.0.11
-Release:    0
+Release:    1
 Group:      System/Libraries
 License:    BSD-2.0 and Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
@@ -43,11 +43,7 @@ sed -i -e "s#@TREMOLO_REQPKG@#$TREMOLO_REQPKG#g" tremolo/libtremolo.pc
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}%{_datadir}/license
-cp COPYING %{buildroot}%{_datadir}/license/%{name}
 %make_install
-mkdir -p %{buildroot}%{_datadir}/license
-cp LICENSE %{buildroot}%{_datadir}/license/%{name}
 
 %clean
 rm -rf %{buildroot}
@@ -57,11 +53,10 @@ rm -rf %{buildroot}
 
 
 %files
-%{_datadir}/license/%{name}
 %manifest libtremolo.manifest
 %defattr(-,root,root,-)
 %{_libdir}/*.so*
-%{_datadir}/license/%{name}
+%license COPYING LICENSE.APLv2
 
 %files devel
 %defattr(-,root,root,-)
